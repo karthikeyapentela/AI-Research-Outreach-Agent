@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "timestamp": "2026-07-09 10:00:00",
+        "company_name": "BatX Energies",
+        "research_summary": "Battery recycling startup in India",
+        "drafted_email": "Hi BatX team, loved your battery recycling mission.",
+        "confidence_score": 10,
+        "human_rating": "good",
+        "correction_note": ""
+    },
+    {
+        "id": 2,
+        "timestamp": "2026-07-09 10:05:00",
+        "company_name": "ABC Technologies",
+        "research_summary": "Software services company",
+        "drafted_email": "Hi ABC team...",
+        "confidence_score": 5,
+        "human_rating": "needs_improvement",
+        "correction_note": "Email was too generic and assumed funding information."
+    }
+]

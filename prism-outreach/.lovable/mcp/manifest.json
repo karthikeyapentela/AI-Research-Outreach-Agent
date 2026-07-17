@@ -1,0 +1,116 @@
+{
+  "version": 1,
+  "sdk_version": "0.20.1",
+  "path": "/mcp",
+  "auth": {
+    "type": "oauth",
+    "issuer": "https://oplurmumiiqflskiqerq.supabase.co/auth/v1",
+    "accepted_audiences": [
+      "authenticated"
+    ]
+  },
+  "mcp": {
+    "server": {
+      "name": "outreach-ai-mcp",
+      "version": "0.1.0",
+      "title": "Outreach AI"
+    },
+    "tools": [
+      {
+        "name": "research_company",
+        "title": "Research a company",
+        "description": "Research a company from the public web and return a structured brief: one-line summary, what they do, recent signals, and suggested angles for outreach.",
+        "annotations": {
+          "readOnlyHint": true,
+          "openWorldHint": true
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "company": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Company name or website (e.g. 'Vercel' or 'vercel.com')."
+            },
+            "focus": {
+              "description": "Optional angle to bias the research (e.g. 'hiring', 'product launches', 'funding').",
+              "type": "string"
+            }
+          },
+          "required": [
+            "company"
+          ]
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "draft_outreach_email",
+        "title": "Draft an outreach email",
+        "description": "Generate a personalized cold outreach email to a specific person at a specific company, in a chosen tone.",
+        "annotations": {
+          "readOnlyHint": true,
+          "openWorldHint": true
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "company": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Target company name."
+            },
+            "recipient": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Recipient name and role (e.g. 'Andreas, Head of DevRel')."
+            },
+            "goal": {
+              "type": "string",
+              "minLength": 1,
+              "description": "What you want from this outreach (meeting, feedback, intro, etc.)."
+            },
+            "tone": {
+              "default": "direct",
+              "description": "Tone of the email.",
+              "type": "string",
+              "enum": [
+                "dry",
+                "warm",
+                "direct",
+                "playful"
+              ]
+            },
+            "context": {
+              "description": "Any extra context or angle to reference.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "company",
+            "recipient",
+            "goal"
+          ]
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "me",
+        "title": "Who am I",
+        "description": "Return the currently authenticated user's id and email (from the OAuth token).",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
